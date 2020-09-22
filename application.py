@@ -1,16 +1,20 @@
+from dotenv import load_dotenv
 from flask import Flask, request, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 from marshmallow_sqlalchemy import ModelSchema
 from marshmallow import fields
 from flask_cors import CORS
+import os
 
-
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
+DB_URI = os.getenv("DB_URI")
+
 #SqlAlchemy Database Configuration With Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost:5000/LetsTodo'
+app.config['SQLALCHEMY_DATABASE_URI'] =  DB_URI
 
 # create an object of SQLAlchemy named as db, which will handle our ORM-related activities.
 db = SQLAlchemy(app)
@@ -20,7 +24,7 @@ db = SQLAlchemy(app)
 class LetsTodo(db.Model):
     __tablename__ = "todos"
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(20))
+    title = db.Column(db.String(100))
     
 
     def create(self):
