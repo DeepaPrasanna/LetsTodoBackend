@@ -14,7 +14,7 @@ CORS(app)
 DATABASE_URL = os.getenv("DB_URI")
 
 #SqlAlchemy Database Configuration With Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] =  DATABASE_URL
+app.config['SQLALCHEMY_DATABASE_URI'] =  DATABASE_URL   
 
 # create an object of SQLAlchemy named as db, which will handle our ORM-related activities.
 db = SQLAlchemy(app)
