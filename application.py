@@ -11,10 +11,10 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-DB_URI = os.getenv("DB_URI")
+DATABASE_URL = os.getenv("DB_URI")
 
 #SqlAlchemy Database Configuration With Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] =  DB_URI
+app.config['SQLALCHEMY_DATABASE_URI'] =  DATABASE_URL
 
 # create an object of SQLAlchemy named as db, which will handle our ORM-related activities.
 db = SQLAlchemy(app)
