@@ -11,7 +11,7 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-DATABASE_URL = os.getenv("DB_URI")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 #SqlAlchemy Database Configuration With Mysql
 app.config['SQLALCHEMY_DATABASE_URI'] =  DATABASE_URL   
